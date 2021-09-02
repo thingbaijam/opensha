@@ -23,6 +23,8 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.function.DoubleBinaryOperator;
+import java.util.function.DoubleUnaryOperator;
 
 import org.apache.commons.io.IOUtils;
 import org.opensha.commons.exceptions.InvalidRangeException;
@@ -340,6 +342,17 @@ public class EvenlyDiscretizedFunc extends AbstractDiscretizedFunc{
 	}
 
 	/**
+	 * Maps a user-defined function F to each point, setting y = F(x).
+	 * 
+	 * @param mappedFn
+	 */
+	public void setYofX(DoubleUnaryOperator mappedFn){
+		for(int i=0; i<this.size();i++) {
+			this.set(i, mappedFn.applyAsDouble(getX(i)));
+		}		
+	}	
+	
+	/**
 	 * This method can be used for generating histograms if tolerance is set greater than delta.
 	 * Adds to the y-value at a specified index. The x-value index is first
 	 * calculated, then the y-value is added in it's array.  
@@ -612,8 +625,7 @@ public class EvenlyDiscretizedFunc extends AbstractDiscretizedFunc{
 			Preconditions.checkNotNull(maxX, "maxX must be supplied before values to deserialize EvenlyDiscretizedFunc");
 			Preconditions.checkNotNull(size, "size must be supplied before values to deserialize EvenlyDiscretizedFunc");
 			return new EvenlyDiscretizedFunc(minX, maxX, size);
-		}
-		
+		}	
 	}
-
+	
 }
