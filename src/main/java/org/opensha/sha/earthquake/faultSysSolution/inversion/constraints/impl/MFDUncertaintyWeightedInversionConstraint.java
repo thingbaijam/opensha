@@ -93,7 +93,7 @@ public class MFDUncertaintyWeightedInversionConstraint extends InversionConstrai
 					if (targetMagFreqDist.getClosestYtoX(mag) == 0) {
 						setA(A, rowIndex, rup, 0d);
 					} else {
-						// CBC apply uncertainty weight to the A matrix
+						// apply uncertainty adjusted weight to the A matrix
 						setA(A, rowIndex, rup, weight * targetUncertaintyWeight.getClosestYtoX(mag) * fractRupInside / targetMagFreqDist.getClosestYtoX(mag));
 						numNonZeroElements++;
 					}
@@ -104,7 +104,7 @@ public class MFDUncertaintyWeightedInversionConstraint extends InversionConstrai
 				if (targetMagFreqDist.getY(magIndex)==0)
 					d[rowIndex]=0;
 				else
-					// CBC apply uncertainty weight to the d matrix					
+					// apply uncertainty adjusted weight to the d matrix	
 					d[rowIndex] = weight * targetUncertaintyWeight.getY(magIndex); 
 			}
 			// move startRow to point after this constraint
