@@ -15,13 +15,9 @@ import scratch.UCERF3.utils.MFD_InversionConstraint;
 import scratch.UCERF3.utils.MFD_WeightedInversionConstraint;
 
 /**
- * Constrain the solution to match the given MFD constraints, with an uncertainty function allowing the constraint
- * weight to vary according to the uncertainty curve.
+ * Constrain the solution to match the given MFD Weighted constraints. 
  * 
- * 
- * In NZSHM we wantot explore a  used separate constraints for northern and southern CA.
- * 
- * @author Morgan Page & Kevin Milner
+ * @author chrisbc
  *
  */
 public class MFDUncertaintyWeightedInversionConstraint extends InversionConstraint {
@@ -35,11 +31,10 @@ public class MFDUncertaintyWeightedInversionConstraint extends InversionConstrai
 	private HashSet<Integer> excludeRupIndexes;
 
 	public MFDUncertaintyWeightedInversionConstraint(FaultSystemRupSet rupSet, double weight,
-			List<MFD_WeightedInversionConstraint> mfdWeightedConstraints, HashSet<Integer> excludeRupIndexes) {
+			List<MFD_WeightedInversionConstraint> mfdWeightedConstraints) {
 		this.rupSet = rupSet;
 		this.weight = weight;
 		this.mfdWeightedConstraints = mfdWeightedConstraints;
-		this.excludeRupIndexes = excludeRupIndexes;
 	}
 
 	@Override

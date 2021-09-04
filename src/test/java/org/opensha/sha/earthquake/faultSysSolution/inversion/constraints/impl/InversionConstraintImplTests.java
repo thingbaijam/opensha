@@ -95,7 +95,7 @@ public class InversionConstraintImplTests {
 		List<MFD_WeightedInversionConstraint> mfdConstraints = new ArrayList<>();
 		mfdConstraints.add(new MFD_WeightedInversionConstraint(mfd, region, weight));
 		
-		MFDUncertaintyWeightedInversionConstraint constr = new MFDUncertaintyWeightedInversionConstraint(rupSet, 1000, mfdConstraints, null);
+		MFDUncertaintyWeightedInversionConstraint constr = new MFDUncertaintyWeightedInversionConstraint(rupSet, 1000, mfdConstraints);
 	
 		testConstraint(constr);
 	}
