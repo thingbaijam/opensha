@@ -344,13 +344,25 @@ public class EvenlyDiscretizedFunc extends AbstractDiscretizedFunc{
 	/**
 	 * Maps a user-defined function F to each point, setting y = F(x).
 	 * 
-	 * @param mappedFn
+	 * @param mappedFn(x)
 	 */
 	public void setYofX(DoubleUnaryOperator mappedFn){
 		for(int i=0; i<this.size();i++) {
 			this.set(i, mappedFn.applyAsDouble(getX(i)));
 		}		
 	}	
+	
+	/**
+	 * Maps a user-defined function F to each point, setting y = F(x).
+	 * 
+	 * @param mappedFn(x, y)
+	 */
+	public void setYofX(DoubleBinaryOperator mappedFn){
+		for(int i=0; i<this.size();i++) {
+			this.set(i, mappedFn.applyAsDouble(getX(i), getY(i)));
+		}
+	}	
+	
 	
 	/**
 	 * This method can be used for generating histograms if tolerance is set greater than delta.
