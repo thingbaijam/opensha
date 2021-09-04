@@ -260,7 +260,7 @@ public class UCERF3InversionConfiguration implements XMLSaveable {
 		double parkfieldConstraintWt = 1000;
 		
 		// get MFD constraints
-		List<MFD_InversionConstraint> mfdConstraints = targetMFDs.getMFD_Constraints();
+		List<MFD_InversionConstraint> mfdConstraints = (List<MFD_InversionConstraint>) targetMFDs.getMFD_Constraints();
 		
 		double MFDTransitionMag = 7.85; // magnitude to switch from MFD equality to MFD inequality
 		
